@@ -3,7 +3,7 @@ public:
     bool uniqueOccurrences(vector<int>& arr) {
         bool ret = true;
         unordered_map<int, int> tempMap;
-        int tempArr[1000] = {0};
+        unordered_map<int, int> revereseTempMap;
         
         for (int i = 0; i < arr.size(); ++i) {
             tempMap[arr[i]]++;
@@ -13,12 +13,12 @@ public:
         unordered_map<int, int>::iterator endIter = tempMap.end();
         
         for (; iter != endIter; ++iter) {
-            if (tempArr[iter->second] != 0) {
+            if (revereseTempMap[iter->second] != 0) {
                 ret = false;
                 break;
             }
             else {
-                tempArr[iter->second] = 1;
+                revereseTempMap[iter->second] = 1;
             }            
         }
 
